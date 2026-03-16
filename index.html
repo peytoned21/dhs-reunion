@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DHS Class of 2006 — 20th Reunion</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0d1b3e; --navy-mid: #162352; --red: #b01c2e; --red-mid: #c8102e;
+    --white: #ffffff; --off-white: #f4f6fa; --silver: #e8ecf4; --rule: #d0d8e8;
+    --ink: #0d1b3e; --ink-mid: #3a4a6a; --ink-light: #7a8aaa; --ink-faint: #b0baca;
+    --green: #1a6b3a; --green-bg: #e6f4ec; --green-rule: #a8d4b8;
+    --amber: #7a4f00; --amber-bg: #fff8e6; --amber-rule: #f0cc80;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--ink); min-height: 100vh; }
+
+  /* HERO */
+  header { background: var(--navy); text-align: center; padding: 2.5rem 1.5rem 0; position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 41px); pointer-events: none; }
+  .hero-top-bar { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red-mid); }
+  .eyebrow { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1.25rem; }
+  .paw { width: 18px; height: 18px; fill: var(--red-mid); flex-shrink: 0; }
+  .hero-number-wrap { position: relative; display: inline-block; margin-bottom: 0.25rem; }
+  .hero-class { position: absolute; top: -0.08em; left: 50%; transform: translateX(-50%); font-family: 'Cinzel', serif; font-size: clamp(17px, 3.5vw, 23px); font-weight: 400; color: var(--ink-faint); white-space: nowrap; letter-spacing: 0.06em; }
+  .hero-number { font-family: 'Cinzel', serif; font-size: clamp(80px, 17vw, 120px); font-weight: 600; line-height: 0.88; color: var(--white); letter-spacing: -0.02em; }
+  .hero-reunion { font-family: 'Cinzel', serif; font-size: clamp(11px, 2vw, 14px); font-weight: 600; letter-spacing: 0.45em; color: var(--ink-faint); text-transform: uppercase; margin-top: 0.5rem; margin-bottom: 1.25rem; }
+  .red-rule { display: flex; align-items: center; gap: 10px; max-width: 260px; margin: 0 auto 1.25rem; }
+  .red-rule-line { flex: 1; height: 1px; background: var(--red-mid); opacity: 0.4; }
+  .red-rule-diamond { width: 5px; height: 5px; background: var(--red-mid); transform: rotate(45deg); flex-shrink: 0; }
+  .hero-date { display: inline-block; background: var(--red-mid); color: var(--white); font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; padding: 6px 20px; border-radius: 2px; margin-bottom: 0.6rem; }
+  .hero-venue { font-size: 12px; font-weight: 300; color: var(--ink-light); letter-spacing: 0.06em; margin-bottom: 1.25rem; }
+
+  /* COUNTDOWN */
+  .countdown { display: flex; justify-content: center; gap: 6px; margin-bottom: 1.25rem; }
+  .cd-block { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 8px 10px; min-width: 52px; text-align: center; }
+  .cd-num { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 600; color: var(--white); line-height: 1; }
+  .cd-label { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-top: 3px; }
+  .cd-sep { font-family: 'Cinzel', serif; font-size: 20px; color: var(--red-mid); align-self: center; padding-bottom: 10px; opacity: 0.6; }
+
+  /* EARLY BIRD */
+  .early-bird-banner { background: var(--amber-bg); border: 1px solid var(--amber-rule); border-radius: 4px; padding: 10px 16px; margin: 0 1.5rem 1.25rem; display: flex; align-items: center; gap: 10px; justify-content: center; }
+  .eb-icon { font-size: 16px; flex-shrink: 0; }
+  .eb-text { font-size: 13px; color: var(--amber); font-weight: 500; }
+  .eb-days { font-family: 'Cinzel', serif; font-weight: 600; }
+
+  /* RSVP STEPS */
+  .rsvp-wrap { margin-bottom: 2rem; }
+  .steps { display: flex; gap: 10px; justify-content: center; align-items: stretch; flex-wrap: wrap; }
+  .step { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .step-label { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .step-divider { display: flex; align-items: center; padding-top: 18px; color: rgba(255,255,255,0.25); font-size: 20px; }
+  .rsvp-btn { display: inline-block; font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; padding: 11px 24px; border-radius: 3px; text-decoration: none; cursor: pointer; transition: background 0.15s, transform 0.1s; white-space: nowrap; }
+  .rsvp-btn:active { transform: scale(0.98); }
+  .rsvp-btn.step1 { background: rgba(255,255,255,0.1); color: var(--white); border: 1px solid rgba(255,255,255,0.25); }
+  .rsvp-btn.step1:hover { background: rgba(255,255,255,0.18); }
+  .rsvp-btn.step2 { background: var(--red-mid); color: var(--white); border: 1px solid transparent; }
+  .rsvp-btn.step2:hover { background: var(--red); }
+  .cal-link { display: block; margin-top: 10px; font-size: 11px; color: var(--ink-light); text-decoration: none; letter-spacing: 0.04em; cursor: pointer; }
+  .cal-link:hover { text-decoration: underline; }
+  .hero-stripe { display: flex; height: 5px; }
+  .stripe-red { flex: 2; background: var(--red-mid); }
+  .stripe-white { flex: 1; background: var(--white); }
+  .stripe-navy { flex: 2; background: var(--navy-mid); }
+
+  /* STATS */
+  .stats-bar { background: var(--white); display: flex; border-bottom: 1px solid var(--rule); }
+  .stat { flex: 1; padding: 1rem 0; text-align: center; border-right: 1px solid var(--rule); }
+  .stat:last-child { border-right: none; }
+  .stat-n { font-family: 'Cinzel', serif; font-size: 28px; font-weight: 600; color: var(--navy); line-height: 1; }
+  .stat-l { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-top: 4px; }
+
+  /* SHARED SECTION */
+  .section { border-bottom: 1px solid var(--rule); }
+  .section-inner { max-width: 600px; margin: 0 auto; padding: 1.75rem 1.25rem; }
+  .section-title { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+  /* WHO'S COMING */
+  .list-section { background: var(--off-white); border-bottom: 1px solid var(--rule); }
+  .list-section-inner { max-width: 600px; margin: 0 auto; padding: 1.5rem 1.25rem 2rem; }
+  .list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+  .legend { display: flex; gap: 16px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-light); }
+  .legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .dot-paid { background: var(--navy); }
+  .dot-unpaid { background: transparent; border: 1.5px solid var(--ink-faint); }
+  .refresh { padding: 7px 13px; border: 1px solid var(--rule); border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 12px; background: var(--white); color: var(--ink-light); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+  .refresh:hover { background: var(--silver); border-color: var(--navy); color: var(--navy); }
+  .scroll-outer { overflow: hidden; position: relative; border: 1px solid var(--rule); border-radius: 6px; background: var(--white); height: 420px; }
+  .scroll-outer::before, .scroll-outer::after { content: ''; position: absolute; left: 0; right: 0; height: 64px; z-index: 2; pointer-events: none; }
+  .scroll-outer::before { top: 0; background: linear-gradient(to bottom, var(--white) 15%, transparent); }
+  .scroll-outer::after { bottom: 0; background: linear-gradient(to top, var(--white) 15%, transparent); }
+  .scroll-outer:hover .list { animation-play-state: paused; }
+  .list { display: flex; flex-direction: column; animation: scrollUp 30s linear infinite; }
+  @keyframes scrollUp { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+  .entry { display: flex; align-items: center; padding: 13px 16px; background: var(--white); border-bottom: 1px solid var(--rule); gap: 12px; flex-shrink: 0; }
+  .entry-body { flex: 1; min-width: 0; }
+  .entry-name { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 400; line-height: 1.3; }
+  .entry-guest { font-size: 12px; font-weight: 300; font-style: italic; margin-top: 2px; }
+  .entry-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .paid .entry-name { color: var(--navy); }
+  .paid .entry-guest { color: var(--ink-mid); }
+  .paid .entry-dot { background: var(--navy); }
+  .unpaid .entry-name { color: var(--ink-faint); }
+  .unpaid .entry-guest { color: var(--ink-faint); opacity: 0.75; }
+  .unpaid .entry-dot { background: transparent; border: 1.5px solid var(--ink-faint); }
+  .empty { text-align: center; padding: 3rem; color: var(--ink-light); font-size: 14px; font-weight: 300; }
+  .hint { text-align: center; font-size: 11px; color: var(--ink-faint); margin-top: 6px; font-style: italic; }
+  .list-footer { text-align: center; margin-top: 1.25rem; font-size: 11px; color: var(--ink-faint); font-weight: 300; letter-spacing: 0.04em; }
+  .list-footer a { color: var(--red); text-decoration: none; cursor: pointer; }
+  .list-footer a:hover { text-decoration: underline; }
+
+  /* WHAT'S INCLUDED */
+  .included-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .included-card { background: var(--off-white); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 14px; display: flex; align-items: flex-start; gap: 12px; }
+  .included-card.full { grid-column: 1 / -1; }
+  .included-card.derby { border-color: var(--red-mid); background: #fff8f8; }
+  .included-emoji { font-size: 22px; flex-shrink: 0; line-height: 1.2; }
+  .included-text {}
+  .included-label { font-size: 13px; font-weight: 500; color: var(--navy); line-height: 1.3; }
+  .included-sub { font-size: 12px; color: var(--ink-light); font-weight: 300; margin-top: 3px; line-height: 1.5; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-bottom: 1px solid var(--rule); }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 14px 0; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .faq-q:hover { color: var(--red-mid); }
+  .faq-chevron { font-size: 12px; color: var(--ink-faint); transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-a { font-size: 13px; color: var(--ink-mid); font-weight: 300; line-height: 1.7; padding-bottom: 14px; display: none; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* PAYMENT */
+  .payment { background: var(--white); border-top: 3px solid var(--red-mid); }
+  .payment-note { font-size: 12px; color: var(--red-mid); margin-bottom: 1.25rem; font-style: italic; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+  .pricing-card { border: 1px solid var(--rule); border-radius: 6px; padding: 16px 12px 12px; position: relative; }
+  .pricing-card.early { border-color: var(--navy); }
+  .pricing-card.door { background: var(--off-white); }
+  .pricing-badge { position: absolute; top: -10px; left: 10px; font-size: 9px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
+  .badge-early { background: var(--navy); color: var(--white); }
+  .badge-door { background: var(--ink-faint); color: var(--white); }
+  .pricing-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 10px; }
+  .pricing-row { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; border-bottom: 1px solid var(--silver); }
+  .pricing-row:last-child { border-bottom: none; }
+  .pricing-who { font-size: 12px; color: var(--ink-mid); font-weight: 300; }
+  .pricing-amt { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 600; color: var(--navy); }
+  .pricing-deadline { font-size: 10px; color: var(--red-mid); margin-top: 8px; font-style: italic; }
+  .pay-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }
+  .pay-method { border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; background: var(--white); }
+  .pay-method-left { flex: 1; min-width: 0; }
+  .pay-platform { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 3px; }
+  .pay-handle { font-size: 13px; font-weight: 500; color: var(--navy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .copy-btn { background: var(--off-white); border: 1px solid var(--rule); border-radius: 4px; padding: 5px 9px; font-size: 11px; color: var(--ink-light); cursor: pointer; transition: all 0.15s; white-space: nowrap; flex-shrink: 0; font-family: 'DM Sans', sans-serif; }
+  .copy-btn:hover { background: var(--silver); color: var(--navy); border-color: var(--navy); }
+  .copy-btn.copied { background: var(--green-bg); color: var(--green); border-color: var(--green-rule); }
+  .memo-box { background: var(--off-white); border: 1px solid var(--rule); border-left: 3px solid var(--navy); border-radius: 0 6px 6px 0; padding: 12px 14px; margin-bottom: 1.25rem; }
+  .memo-label { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 6px; }
+  .memo-text { font-size: 13px; color: var(--ink-mid); line-height: 1.8; font-weight: 300; }
+  .memo-text code { background: var(--silver); padding: 1px 6px; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-style: normal; font-size: 12px; color: var(--navy); }
+  .payment-closing { font-size: 13px; color: var(--ink-light); font-weight: 300; line-height: 1.7; font-style: italic; }
+
+  /* MOBILE */
+  @media (max-width: 520px) {
+    header { padding: 2rem 1rem 0; }
+    .early-bird-banner { margin: 0 0 1.25rem; border-radius: 0; border-left: none; border-right: none; }
+    .countdown { gap: 4px; }
+    .cd-block { min-width: 44px; padding: 7px 6px; }
+    .cd-num { font-size: 18px; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat { min-width: 50%; }
+    .stat:nth-child(2) { border-right: none; }
+    .included-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pay-methods { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header>
+  <div class="hero-top-bar"></div>
+  <div class="eyebrow">
+    <svg class="paw" viewBox="0 0 100 100"><ellipse cx="50" cy="72" rx="22" ry="18"/><ellipse cx="25" cy="52" rx="10" ry="13" transform="rotate(-20 25 52)"/><ellipse cx="75" cy="52" rx="10" ry="13" transform="rotate(20 75 52)"/><ellipse cx="38" cy="38" rx="9" ry="12" transform="rotate(-10 38 38)"/><ellipse cx="62" cy="38" rx="9" ry="12" transform="rotate(10 62 38)"/></svg>
+    Dunwoody High School &nbsp;·&nbsp; Wildcats
+    <svg class="paw" viewBox="0 0 100 100"><ellipse cx="50" cy="72" rx="22" ry="18"/><ellipse cx="25" cy="52" rx="10" ry="13" transform="rotate(-20 25 52)"/><ellipse cx="75" cy="52" rx="10" ry="13" transform="rotate(20 75 52)"/><ellipse cx="38" cy="38" rx="9" ry="12" transform="rotate(-10 38 38)"/><ellipse cx="62" cy="38" rx="9" ry="12" transform="rotate(10 62 38)"/></svg>
+  </div>
+  <div class="hero-number-wrap">
+    <div class="hero-class">Class of</div>
+    <div class="hero-number">06</div>
+  </div>
+  <div class="hero-reunion">20 Year Reunion</div>
+  <div class="red-rule"><div class="red-rule-line"></div><div class="red-rule-diamond"></div><div class="red-rule-line"></div></div>
+  <div class="hero-date">Saturday, May 2, 2026 &nbsp;·&nbsp; 6:30 – 9:30 PM</div><br/>
+  <div class="hero-venue">The Funwoody Courtyard &nbsp;·&nbsp; 5521 Chamblee Dunwoody Road</div>
+  <div class="countdown">
+    <div class="cd-block"><div class="cd-num" id="cdDays">—</div><div class="cd-label">Days</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-num" id="cdHours">—</div><div class="cd-label">Hours</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-num" id="cdMins">—</div><div class="cd-label">Mins</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="cd-num" id="cdSecs">—</div><div class="cd-label">Secs</div></div>
+  </div>
+  <div class="early-bird-banner" id="earlyBirdBanner">
+    <span class="eb-icon">⏳</span>
+    <span class="eb-text">Early bird pricing ends in <span class="eb-days" id="ebDays">—</span> days — save $10 per person!</span>
+  </div>
+  <div class="rsvp-wrap">
+    <div class="steps">
+      <div class="step">
+        <div class="step-label">Step 1</div>
+        <a class="rsvp-btn step1" href="https://docs.google.com/forms/d/e/1FAIpQLSeZAQ5wCPX860GT8T0iwS5i_pHtLFvY3sz1dukKC7iU99tuvg/viewform" target="_blank">Register</a>
+      </div>
+      <div class="step-divider">→</div>
+      <div class="step">
+        <div class="step-label">Step 2</div>
+        <a class="rsvp-btn step2" href="venmo://paycharge?txn=pay&recipients=Peyton-Edwards-1&note=DHS+2006+Reunion" onclick="handleVenmo(event)">Pay via Venmo</a>
+      </div>
+    </div>
+    <a class="cal-link" onclick="addToCalendar()">+ Add to Calendar</a>
+  </div>
+  <div class="hero-stripe"><div class="stripe-red"></div><div class="stripe-white"></div><div class="stripe-navy"></div></div>
+</header>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-n" id="sTotal">—</div><div class="stat-l">Classmates Registered</div></div>
+  <div class="stat"><div class="stat-n" id="sHead">—</div><div class="stat-l">Total Headcount</div></div>
+</div>
+
+<!-- WHO'S COMING -->
+<div class="list-section">
+  <div class="list-section-inner">
+    <div class="section-title">Who's coming</div>
+    <div class="list-header">
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot dot-paid"></div>paid</div>
+        <div class="legend-item"><div class="legend-dot dot-unpaid"></div>unpaid</div>
+      </div>
+      <button class="refresh" onclick="load()">↻ Refresh</button>
+    </div>
+    <div class="scroll-outer">
+      <div class="list" id="list"><div class="empty">Loading…</div></div>
+    </div>
+    <div class="hint">hover to pause</div>
+    <div class="list-footer">Auto-refreshes every 5 min &nbsp;·&nbsp; <a onclick="load()">↻ refresh now</a> &nbsp;·&nbsp; <span id="lastLoad">—</span></div>
+  </div>
+</div>
+
+<!-- WHAT'S INCLUDED -->
+<div class="section" style="background:var(--white);">
+  <div class="section-inner">
+    <div class="section-title">What's included</div>
+    <div class="included-grid">
+      <div class="included-card">
+        <div class="included-emoji">🍽️</div>
+        <div class="included-text">
+          <div class="included-label">Heavy Hors d'Oeuvres</div>
+          <div class="included-sub">Buffet-style spread all night</div>
+        </div>
+      </div>
+      <div class="included-card">
+        <div class="included-emoji">🎟️</div>
+        <div class="included-text">
+          <div class="included-label">Two Drink Tickets</div>
+          <div class="included-sub">Per person, included with admission</div>
+        </div>
+      </div>
+      <div class="included-card">
+        <div class="included-emoji">👗</div>
+        <div class="included-text">
+          <div class="included-label">Wear Whatever Makes You Feel Good</div>
+          <div class="included-sub">Cocktail, casual, Derby hat, jeans — come as you are and have fun with it</div>
+        </div>
+      </div>
+      <div class="included-card derby">
+        <div class="included-emoji">🏇</div>
+        <div class="included-text">
+          <div class="included-label">Kentucky Derby Watch Party</div>
+          <div class="included-sub">The 152nd Run for the Roses is that night — post time ~7 PM ET on NBC. Get there early and catch the race with your classmates!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section" style="background:var(--white);">
+  <div class="section-inner">
+    <div class="section-title">Frequently asked questions</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I pay at the door?<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">Yes — walk-up tickets will be available at the door for $70 per person ($140 for two), subject to availability. Paying in advance locks in your spot and saves you money, but we'd love to see you either way.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there parking?<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">Yes — free parking is available and plentiful at The Funwoody Courtyard. No need to worry about finding a spot.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What should I wear?<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">Wear whatever makes you feel good! Cocktail attire, casual, Derby chic, a big hat — there's no wrong answer. The only requirement is showing up and having a great time.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What about the Kentucky Derby?<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">The 152nd Kentucky Derby runs the same night — post time is approximately 7:00 PM ET on NBC and Peacock, right as we're getting started. We'll have it on so nobody misses the race. Get there early, grab a drink, and watch the Most Exciting Two Minutes in Sports with your classmates.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I bring kids?<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">This event is adults only — a night for you to reconnect with classmates and let loose a little. We may plan a family-friendly daytime event down the road, so stay tuned!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Who can I contact with questions?<span class="faq-chevron">▼</span></button>
+        <div class="faq-a">Reach out to Peyton Edwards at <a href="mailto:peytoned@gmail.com" style="color:var(--red-mid);text-decoration:none;">peytoned@gmail.com</a> — we'll get back to you as soon as possible.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT -->
+<div class="section payment">
+  <div class="section-inner">
+    <div class="section-title">Tickets &amp; Payment</div>
+    <div class="payment-note">Your spot is not confirmed until payment is received.</div>
+    <div class="pricing-grid">
+      <div class="pricing-card early">
+        <div class="pricing-badge badge-early">Early Bird</div>
+        <div class="pricing-label">Pay by April 1</div>
+        <div class="pricing-row"><span class="pricing-who">Just Me</span><span class="pricing-amt">$50</span></div>
+        <div class="pricing-row"><span class="pricing-who">Me + Guest</span><span class="pricing-amt">$100</span></div>
+        <div class="pricing-deadline">Ends April 1, 2026</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-label">Standard</div>
+        <div class="pricing-row"><span class="pricing-who">Just Me</span><span class="pricing-amt">$60</span></div>
+        <div class="pricing-row"><span class="pricing-who">Me + Guest</span><span class="pricing-amt">$120</span></div>
+        <div class="pricing-deadline">After April 1, 2026</div>
+      </div>
+      <div class="pricing-card door">
+        <div class="pricing-badge badge-door">At the Door</div>
+        <div class="pricing-label">Night of event</div>
+        <div class="pricing-row"><span class="pricing-who">Just Me</span><span class="pricing-amt">$70</span></div>
+        <div class="pricing-row"><span class="pricing-who">Me + Guest</span><span class="pricing-amt">$140</span></div>
+        <div class="pricing-deadline">Subject to availability</div>
+      </div>
+    </div>
+    <div class="pay-methods">
+      <div class="pay-method">
+        <div class="pay-method-left">
+          <div class="pay-platform">Venmo</div>
+          <div class="pay-handle">@Peyton-Edwards-1</div>
+        </div>
+        <button class="copy-btn" onclick="copyText('@Peyton-Edwards-1', this)">Copy</button>
+      </div>
+      <div class="pay-method">
+        <div class="pay-method-left">
+          <div class="pay-platform">Zelle</div>
+          <div class="pay-handle">peytoned@gmail.com</div>
+        </div>
+        <button class="copy-btn" onclick="copyText('peytoned@gmail.com', this)">Copy</button>
+      </div>
+    </div>
+    <div class="memo-box">
+      <div class="memo-label">Payment Memo</div>
+      <div class="memo-text">
+        Write your full name as registered in the memo.<br>
+        Solo: <code>Jane Smith</code> &nbsp;·&nbsp; With guest: <code>Jane Smith + Guest</code>
+      </div>
+    </div>
+    <div class="payment-closing">Once you've paid, keep an eye on your inbox — we'll send a short nostalgia questionnaire to help build the reunion slideshow. See you in May!</div>
+  </div>
+</div>
+
+<script>
+const SHEET      = '1xwBi3n92z6VU1jSfPYEo8JOJ1zkdlCtc-GTDWtwhZDc';
+const EVENT_DATE = new Date('2026-05-02T18:30:00');
+const EARLY_BIRD = new Date('2026-04-01T23:59:59');
+let people = [];
+
+function updateCountdown() {
+  var now  = new Date();
+  var diff = EVENT_DATE - now;
+  if (diff <= 0) {
+    document.querySelector('.countdown').innerHTML = '<div style="color:var(--ink-faint);font-size:14px;padding:1rem;">Tonight\'s the night!</div>';
+    return;
+  }
+  var d = Math.floor(diff / 86400000);
+  var h = Math.floor((diff % 86400000) / 3600000);
+  var m = Math.floor((diff % 3600000) / 60000);
+  var s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cdDays').textContent  = String(d).padStart(2, '0');
+  document.getElementById('cdHours').textContent = String(h).padStart(2, '0');
+  document.getElementById('cdMins').textContent  = String(m).padStart(2, '0');
+  document.getElementById('cdSecs').textContent  = String(s).padStart(2, '0');
+  var ebDiff = EARLY_BIRD - now;
+  var banner = document.getElementById('earlyBirdBanner');
+  if (ebDiff <= 0) { banner.style.display = 'none'; }
+  else { document.getElementById('ebDays').textContent = Math.ceil(ebDiff / 86400000); }
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+function handleVenmo(e) {
+  setTimeout(function() { window.open('https://venmo.com/Peyton-Edwards-1', '_blank'); }, 400);
+}
+
+function addToCalendar() {
+  var title = encodeURIComponent('DHS Class of 2006 — 20th Reunion');
+  var loc   = encodeURIComponent('The Funwoody Courtyard, 5521 Chamblee Dunwoody Road, Dunwoody, GA');
+  window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&dates=20260502T183000/20260502T213000&location=' + loc, '_blank');
+}
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function toggleFaq(btn) {
+  btn.closest('.faq-item').classList.toggle('open');
+}
+
+async function load() {
+  try {
+    var r = await fetch('https://docs.google.com/spreadsheets/d/' + SHEET + '/gviz/tq?tqx=out:json&t=' + Date.now());
+    var t = await r.text();
+    var json = JSON.parse(t.match(/setResponse\(([\s\S]*?)\);?\s*$/)[1]);
+    people = json.table.rows
+      .filter(function(r) { return r.c[2] && r.c[2].v; })
+      .map(function(r) {
+        return {
+          first: r.c[2].v || '',
+          last:  (r.c[3] && r.c[3].v) || '',
+          plus:  ((r.c[4] && r.c[4].v) || '').toLowerCase().indexOf('yes') !== -1,
+          guest: (r.c[5] && r.c[5].v) || '',
+          paid:  ((r.c[9] && r.c[9].v) || '').toLowerCase() === 'yes'
+        };
+      })
+      .sort(function(a, b) { return a.last.localeCompare(b.last); });
+
+    var withGuest = people.filter(function(p) { return p.plus; }).length;
+    document.getElementById('sTotal').textContent = people.length;
+    document.getElementById('sHead').textContent  = people.length + withGuest;
+    document.getElementById('lastLoad').textContent = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+
+    var html = people.map(function(p) {
+      var guest = p.plus ? '<div class="entry-guest">with ' + (p.guest || 'guest') + '</div>' : '';
+      return '<div class="entry ' + (p.paid ? 'paid' : 'unpaid') + '"><div class="entry-body"><div class="entry-name">' + p.first + ' ' + p.last + '</div>' + guest + '</div><div class="entry-dot"></div></div>';
+    }).join('');
+    var list = document.getElementById('list');
+    list.innerHTML = html + html;
+    list.style.animationDuration = Math.max(16, people.length * 2.5) + 's';
+  } catch(e) {
+    document.getElementById('list').innerHTML = '<div class="empty">Could not load — ensure the sheet is shared as "Anyone with the link can view."</div>';
+  }
+}
+
+load();
+setInterval(load, 5 * 60 * 1000);
+</script>
+</body>
+</html>
