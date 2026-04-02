@@ -12,7 +12,6 @@
     --white: #ffffff; --off-white: #f4f6fa; --silver: #e8ecf4; --rule: #d0d8e8;
     --ink: #0d1b3e; --ink-mid: #3a4a6a; --ink-light: #7a8aaa; --ink-faint: #b0baca;
     --green: #1a6b3a; --green-bg: #e6f4ec; --green-rule: #a8d4b8;
-    --amber: #7a4f00; --amber-bg: #fff8e6; --amber-rule: #f0cc80;
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--ink); min-height: 100vh; }
 
@@ -36,7 +35,9 @@
   .cd-num { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 600; color: var(--white); line-height: 1; }
   .cd-label { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-top: 3px; }
   .cd-sep { font-family: 'Cinzel', serif; font-size: 20px; color: rgba(158,16,32,0.6); align-self: center; padding-bottom: 10px; }
-.rsvp-wrap { margin-bottom: 2rem; }
+
+  .rsvp-wrap { margin-bottom: 2rem; }
+  .price-hint { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; margin-bottom: 0.75rem; }
   .steps { display: flex; gap: 10px; justify-content: center; align-items: stretch; flex-wrap: wrap; }
   .step { display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .step-label { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
@@ -47,7 +48,8 @@
   .rsvp-btn.step1:hover { background: rgba(255,255,255,0.18); }
   .rsvp-btn.step2 { background: var(--red-mid); color: var(--white); border: 1px solid transparent; }
   .rsvp-btn.step2:hover { background: var(--red); }
-  .cal-link { display: block; margin-top: 10px; font-size: 11px; color: var(--ink-light); text-decoration: none; letter-spacing: 0.04em; cursor: pointer; }
+  .confirm-note { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 0.75rem; letter-spacing: 0.03em; }
+  .cal-link { display: block; margin-top: 8px; font-size: 11px; color: var(--ink-light); text-decoration: none; letter-spacing: 0.04em; cursor: pointer; }
   .cal-link:hover { text-decoration: underline; }
   .hero-stripe { height: 3px; background: rgba(255,255,255,0.07); }
 
@@ -62,7 +64,6 @@
   .section-title { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 10px; }
   .section-title::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
 
-  /* WHO'S COMING */
   .list-section { background: var(--off-white); border-bottom: 1px solid var(--rule); }
   .list-section-inner { max-width: 600px; margin: 0 auto; padding: 1.5rem 1.25rem 2rem; }
   .list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
@@ -74,7 +75,6 @@
   .refresh { padding: 7px 13px; border: 1px solid var(--rule); border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 12px; background: var(--white); color: var(--ink-light); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
   .refresh:hover { background: var(--silver); border-color: var(--navy); color: var(--navy); }
 
-  /* SEARCH */
   .name-search { width: 100%; padding: 9px 14px; border: 1px solid var(--rule); border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; background: var(--white); color: var(--ink); outline: none; transition: border-color 0.15s; margin-bottom: 0.75rem; }
   .name-search:focus { border-color: var(--navy); }
   .name-search::placeholder { color: var(--ink-faint); }
@@ -91,7 +91,6 @@
   .search-entry.unpaid .s-dot { background: transparent; border: 1.5px solid var(--ink-faint); }
   .no-results { text-align: center; padding: 1.5rem; color: var(--ink-light); font-size: 14px; font-weight: 300; background: var(--white); border: 1px solid var(--rule); border-radius: 6px; }
 
-  /* SCROLL LIST */
   .scroll-outer { overflow: hidden; position: relative; border: 1px solid var(--rule); border-radius: 6px; background: var(--white); height: 420px; }
   .scroll-outer::before, .scroll-outer::after { content: ''; position: absolute; left: 0; right: 0; height: 64px; z-index: 2; pointer-events: none; }
   .scroll-outer::before { top: 0; background: linear-gradient(to bottom, var(--white) 15%, transparent); }
@@ -116,7 +115,6 @@
   .list-footer a { color: var(--red-mid); text-decoration: none; cursor: pointer; }
   .list-footer a:hover { text-decoration: underline; }
 
-  /* WHAT'S INCLUDED */
   .included-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .included-card { background: var(--off-white); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 14px; display: flex; align-items: flex-start; gap: 12px; }
   .included-card.derby { border-color: rgba(158,16,32,0.25); background: #fef8f8; }
@@ -124,7 +122,6 @@
   .included-label { font-size: 13px; font-weight: 500; color: var(--navy); line-height: 1.3; }
   .included-sub { font-size: 12px; color: var(--ink-light); font-weight: 300; margin-top: 3px; line-height: 1.5; }
 
-  /* FAQ */
   .faq-list { display: flex; flex-direction: column; }
   .faq-item { border-bottom: 1px solid var(--rule); }
   .faq-item:last-child { border-bottom: none; }
@@ -135,15 +132,14 @@
   .faq-a { font-size: 13px; color: var(--ink-mid); font-weight: 300; line-height: 1.7; padding-bottom: 14px; display: none; }
   .faq-item.open .faq-a { display: block; }
 
-  /* PAYMENT */
   .payment { background: var(--white); border-top: 2px solid rgba(158,16,32,0.25); }
   .payment-note { font-size: 12px; color: var(--red-mid); margin-bottom: 1.25rem; font-style: italic; }
   .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 1.5rem; }
   .pricing-card { border: 1px solid var(--rule); border-radius: 6px; padding: 16px 12px 12px; position: relative; }
-  .pricing-card.early { border-color: var(--navy); }
+  .pricing-card.best { border-color: var(--navy); }
   .pricing-card.door { background: var(--off-white); }
   .pricing-badge { position: absolute; top: -10px; left: 10px; font-size: 9px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
-  .badge-early { background: var(--navy); color: var(--white); }
+  .badge-best { background: var(--navy); color: var(--white); }
   .badge-door { background: var(--ink-faint); color: var(--white); }
   .pricing-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 10px; }
   .pricing-row { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; border-bottom: 1px solid var(--silver); }
@@ -167,12 +163,11 @@
 
   @media (max-width: 520px) {
     header { padding: 2rem 1rem 0; }
-.countdown { gap: 4px; }
+    .countdown { gap: 4px; }
     .cd-block { min-width: 44px; padding: 7px 6px; }
     .cd-num { font-size: 18px; }
     .stats-bar { flex-wrap: wrap; }
-    .stat { min-width: 50%; }
-    .stat:nth-child(2) { border-right: none; }
+    .stat { min-width: 33.33%; }
     .included-grid { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
     .pay-methods { grid-template-columns: 1fr; }
@@ -205,7 +200,8 @@
     <div class="cd-sep">:</div>
     <div class="cd-block"><div class="cd-num" id="cdSecs">—</div><div class="cd-label">Secs</div></div>
   </div>
-<div class="rsvp-wrap">
+  <div class="rsvp-wrap">
+    <div class="price-hint">Tickets: $60 now &nbsp;·&nbsp; $70 at the door</div>
     <div class="steps">
       <div class="step">
         <div class="step-label">Step 1</div>
@@ -217,6 +213,7 @@
         <a class="rsvp-btn step2" href="venmo://paycharge?txn=pay&recipients=Peyton-Edwards-1&note=DHS+2006+Reunion" onclick="handleVenmo(event)">Pay via Venmo</a>
       </div>
     </div>
+    <div class="confirm-note">Your spot is confirmed only after both steps are complete.</div>
     <a class="cal-link" onclick="addToCalendar()">+ Add to Calendar</a>
   </div>
   <div class="hero-stripe"></div>
@@ -225,6 +222,7 @@
 <div class="stats-bar">
   <div class="stat"><div class="stat-n" id="sTotal">—</div><div class="stat-l">Classmates Registered</div></div>
   <div class="stat"><div class="stat-n" id="sHead">—</div><div class="stat-l">Total Headcount</div></div>
+  <div class="stat"><div class="stat-n" style="font-size:22px;">$60</div><div class="stat-l">Per Person Now</div></div>
 </div>
 
 <div class="list-section">
@@ -289,7 +287,7 @@
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Can I pay at the door?<span class="faq-chevron">▼</span></button>
-        <div class="faq-a">Yes — walk-up tickets will be available at the door for $70 per person ($140 for two), subject to availability. Paying in advance locks in your spot and saves you money, but we'd love to see you either way.</div>
+        <div class="faq-a">Yes — walk-up tickets are available at the door for $70 per person ($140 for two), subject to availability. Paying in advance saves $10 per person and helps us plan the food and drinks — so if you can, pay ahead!</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Is there parking?<span class="faq-chevron">▼</span></button>
@@ -319,11 +317,13 @@
   <div class="section-inner">
     <div class="section-title">Tickets &amp; Payment</div>
     <div class="payment-note">Your spot is not confirmed until payment is received.</div>
-    <div class="pricing-grid"><div class="pricing-card">
-        <div class="pricing-label">Standard</div>
+    <div class="pricing-grid">
+      <div class="pricing-card best">
+        <div class="pricing-badge badge-best">Buy in Advance</div>
+        <div class="pricing-label">Best option</div>
         <div class="pricing-row"><span class="pricing-who">Just Me</span><span class="pricing-amt">$60</span></div>
         <div class="pricing-row"><span class="pricing-who">Me + Guest</span><span class="pricing-amt">$120</span></div>
-        <div class="pricing-deadline">After April 1, 2026</div>
+        <div class="pricing-deadline">Locks in your spot</div>
       </div>
       <div class="pricing-card door">
         <div class="pricing-badge badge-door">At the Door</div>
@@ -398,42 +398,40 @@ function handleSearch(q) {
   var results = document.getElementById('searchResults');
   var hint    = document.getElementById('scrollHint');
   if (!q.trim()) {
-    outer.style.display   = 'block';
+    outer.style.display = 'block';
     results.style.display = 'none';
-    hint.style.display    = 'block';
+    hint.style.display = 'block';
     return;
   }
-  outer.style.display   = 'none';
-  hint.style.display    = 'none';
+  outer.style.display = 'none';
+  hint.style.display = 'none';
   results.style.display = 'flex';
   var filtered = people.filter(function(p) {
-    var name = (p.first + ' ' + p.last).toLowerCase();
-    var guest = (p.guest || '').toLowerCase();
-    return name.indexOf(q.toLowerCase()) !== -1 || guest.indexOf(q.toLowerCase()) !== -1;
+    return (p.first+' '+p.last).toLowerCase().indexOf(q.toLowerCase()) !== -1
+      || (p.guest||'').toLowerCase().indexOf(q.toLowerCase()) !== -1;
   });
   if (!filtered.length) {
     results.innerHTML = '<div class="no-results">No matches found.</div>';
     return;
   }
   results.innerHTML = filtered.map(function(p) {
-    var g = p.plus ? '<div class="s-guest">with ' + (p.guest || 'guest') + '</div>' : '';
-    return '<div class="search-entry ' + (p.paid ? 'paid' : 'unpaid') + '"><div style="flex:1;min-width:0;"><div class="s-name">' + p.first + ' ' + p.last + '</div>' + g + '</div><div class="s-dot"></div></div>';
+    var g = p.plus ? '<div class="s-guest">with '+(p.guest||'guest')+'</div>' : '';
+    return '<div class="search-entry '+(p.paid?'paid':'unpaid')+'"><div style="flex:1;min-width:0;"><div class="s-name">'+p.first+' '+p.last+'</div>'+g+'</div><div class="s-dot"></div></div>';
   }).join('');
 }
 
 async function load() {
   try {
-    var r = await fetch('https://docs.google.com/spreadsheets/d/' + SHEET + '/gviz/tq?tqx=out:json&t=' + Date.now());
+    var r = await fetch('https://docs.google.com/spreadsheets/d/'+SHEET+'/gviz/tq?tqx=out:json&t='+Date.now());
     var t = await r.text();
     var json = JSON.parse(t.match(/setResponse\(([\s\S]*?)\);?\s*$/)[1]);
     people = json.table.rows
-      .filter(function(r){ return r.c[2] && r.c[2].v; })
+      .filter(function(r){ return r.c[2]&&r.c[2].v; })
       .map(function(r){ return {
-        first: r.c[2].v || '',
-        last:  (r.c[3] && r.c[3].v) || '',
-        plus:  ((r.c[4] && r.c[4].v) || '').toLowerCase().indexOf('yes') !== -1,
-        guest: (r.c[5] && r.c[5].v) || '',
-        paid:  ((r.c[9] && r.c[9].v) || '').toLowerCase() === 'yes'
+        first: r.c[2].v||'', last: (r.c[3]&&r.c[3].v)||'',
+        plus: ((r.c[4]&&r.c[4].v)||'').toLowerCase().indexOf('yes')!==-1,
+        guest: (r.c[5]&&r.c[5].v)||'',
+        paid: ((r.c[9]&&r.c[9].v)||'').toLowerCase()==='yes'
       }; })
       .sort(function(a,b){ return a.last.localeCompare(b.last); });
     var wg = people.filter(function(p){ return p.plus; }).length;
@@ -441,12 +439,12 @@ async function load() {
     document.getElementById('sHead').textContent  = people.length + wg;
     document.getElementById('lastLoad').textContent = new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
     var html = people.map(function(p){
-      var g = p.plus ? '<div class="entry-guest">with ' + (p.guest||'guest') + '</div>' : '';
-      return '<div class="entry ' + (p.paid?'paid':'unpaid') + '"><div class="entry-body"><div class="entry-name">' + p.first + ' ' + p.last + '</div>' + g + '</div><div class="entry-dot"></div></div>';
+      var g = p.plus ? '<div class="entry-guest">with '+(p.guest||'guest')+'</div>' : '';
+      return '<div class="entry '+(p.paid?'paid':'unpaid')+'"><div class="entry-body"><div class="entry-name">'+p.first+' '+p.last+'</div>'+g+'</div><div class="entry-dot"></div></div>';
     }).join('');
     var list = document.getElementById('list');
-    list.innerHTML = html + html;
-    list.style.animationDuration = Math.max(16, people.length * 2.5) + 's';
+    list.innerHTML = html+html;
+    list.style.animationDuration = Math.max(16,people.length*2.5)+'s';
     var q = document.getElementById('nameSearch').value;
     if (q.trim()) handleSearch(q);
   } catch(e) {
