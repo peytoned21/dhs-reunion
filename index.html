@@ -29,6 +29,8 @@
   .red-rule-diamond { width: 4px; height: 4px; background: var(--red-soft); transform: rotate(45deg); flex-shrink: 0; }
   .hero-date { display: inline-block; background: var(--red-mid); color: var(--white); font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; padding: 6px 20px; border-radius: 2px; margin-bottom: 0.6rem; }
   .hero-venue { font-size: 12px; font-weight: 300; color: var(--ink-light); letter-spacing: 0.06em; margin-bottom: 1.25rem; }
+  .hero-venue a { color: var(--ink-light); text-decoration: none; border-bottom: 1px solid rgba(122,138,170,0.35); transition: color 0.15s, border-color 0.15s; }
+  .hero-venue a:hover { color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.3); }
 
   .countdown { display: flex; justify-content: center; gap: 6px; margin-bottom: 1.25rem; }
   .cd-block { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 8px 10px; min-width: 52px; text-align: center; }
@@ -37,7 +39,8 @@
   .cd-sep { font-family: 'Cinzel', serif; font-size: 20px; color: rgba(158,16,32,0.6); align-self: center; padding-bottom: 10px; }
 
   .rsvp-wrap { margin-bottom: 2rem; }
-  .price-hint { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+  .price-hint { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+  .deadline-hint { font-size: 11px; color: rgba(255,180,180,0.7); letter-spacing: 0.04em; margin-bottom: 0.75rem; font-style: italic; }
   .steps { display: flex; gap: 10px; justify-content: center; align-items: stretch; flex-wrap: wrap; }
   .step { display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .step-label { font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
@@ -48,9 +51,13 @@
   .rsvp-btn.step1:hover { background: rgba(255,255,255,0.18); }
   .rsvp-btn.step2 { background: var(--red-mid); color: var(--white); border: 1px solid transparent; }
   .rsvp-btn.step2:hover { background: var(--red); }
+  .zelle-link { display: block; margin-top: 6px; font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; text-decoration: none; cursor: pointer; transition: color 0.15s; }
+  .zelle-link:hover { color: rgba(255,255,255,0.55); }
   .confirm-note { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 0.75rem; letter-spacing: 0.03em; }
-  .cal-link { display: block; margin-top: 8px; font-size: 11px; color: var(--ink-light); text-decoration: none; letter-spacing: 0.04em; cursor: pointer; }
-  .cal-link:hover { text-decoration: underline; }
+  .cal-share-row { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 8px; }
+  .cal-link, .share-link { font-size: 11px; color: var(--ink-light); text-decoration: none; letter-spacing: 0.04em; cursor: pointer; transition: color 0.15s; }
+  .cal-link:hover, .share-link:hover { color: rgba(255,255,255,0.55); text-decoration: underline; }
+  .cal-share-sep { font-size: 10px; color: rgba(255,255,255,0.12); }
   .hero-stripe { height: 3px; background: rgba(255,255,255,0.07); }
 
   .stats-bar { background: var(--white); display: flex; border-bottom: 1px solid var(--rule); }
@@ -147,6 +154,7 @@
   .pricing-who { font-size: 12px; color: var(--ink-mid); font-weight: 300; }
   .pricing-amt { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 600; color: var(--navy); }
   .pricing-deadline { font-size: 10px; color: var(--red-mid); margin-top: 8px; font-style: italic; }
+  .pricing-door-note { font-size: 10px; color: var(--ink-faint); margin-top: 8px; font-style: italic; line-height: 1.5; }
   .pay-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }
   .pay-method { border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; background: var(--white); }
   .pay-method-left { flex: 1; min-width: 0; }
@@ -160,6 +168,10 @@
   .memo-text { font-size: 13px; color: var(--ink-mid); line-height: 1.8; font-weight: 300; }
   .memo-text code { background: var(--silver); padding: 1px 6px; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-style: normal; font-size: 12px; color: var(--navy); }
   .payment-closing { font-size: 13px; color: var(--ink-light); font-weight: 300; line-height: 1.7; font-style: italic; }
+
+  /* Share toast */
+  .share-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(12px); background: var(--navy); color: var(--white); font-size: 13px; font-weight: 400; padding: 10px 20px; border-radius: 6px; opacity: 0; transition: opacity 0.2s, transform 0.2s; pointer-events: none; z-index: 999; white-space: nowrap; }
+  .share-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
   @media (max-width: 520px) {
     header { padding: 2rem 1rem 0; }
@@ -176,6 +188,8 @@
 </head>
 <body>
 
+<div class="share-toast" id="shareToast">Link copied — share it with a classmate!</div>
+
 <header>
   <div class="hero-top-bar"></div>
   <div class="eyebrow">
@@ -190,7 +204,7 @@
   <div class="hero-reunion">20 Year Reunion</div>
   <div class="red-rule"><div class="red-rule-line"></div><div class="red-rule-diamond"></div><div class="red-rule-line"></div></div>
   <div class="hero-date">Saturday, May 2, 2026 &nbsp;·&nbsp; 6:30 – 9:30 PM</div><br/>
-  <div class="hero-venue">The Funwoody Courtyard &nbsp;·&nbsp; 5521 Chamblee Dunwoody Road</div>
+  <div class="hero-venue"><a href="https://maps.google.com/?q=5521+Chamblee+Dunwoody+Road+Dunwoody+GA" target="_blank">The Funwoody Courtyard &nbsp;·&nbsp; 5521 Chamblee Dunwoody Road</a></div>
   <div class="countdown">
     <div class="cd-block"><div class="cd-num" id="cdDays">—</div><div class="cd-label">Days</div></div>
     <div class="cd-sep">:</div>
@@ -202,6 +216,7 @@
   </div>
   <div class="rsvp-wrap">
     <div class="price-hint">Tickets: $60 now &nbsp;·&nbsp; $70 at the door</div>
+    <div class="deadline-hint">Online registration closes April 28</div>
     <div class="steps">
       <div class="step">
         <div class="step-label">Step 1</div>
@@ -211,10 +226,15 @@
       <div class="step">
         <div class="step-label">Step 2</div>
         <a class="rsvp-btn step2" href="venmo://paycharge?txn=pay&recipients=Peyton-Edwards-1&note=DHS+2006+Reunion" onclick="handleVenmo(event)">Pay via Venmo</a>
+        <a class="zelle-link" href="mailto:peytoned@gmail.com?subject=DHS%202006%20Reunion%20Payment">or pay via Zelle</a>
       </div>
     </div>
     <div class="confirm-note">Your spot is confirmed only after both steps are complete.</div>
-    <a class="cal-link" onclick="addToCalendar()">+ Add to Calendar</a>
+    <div class="cal-share-row">
+      <a class="cal-link" onclick="addToCalendar()">+ Add to Calendar</a>
+      <span class="cal-share-sep">·</span>
+      <a class="share-link" onclick="shareLink()">↗ Share with a classmate</a>
+    </div>
   </div>
   <div class="hero-stripe"></div>
 </header>
@@ -222,7 +242,7 @@
 <div class="stats-bar">
   <div class="stat"><div class="stat-n" id="sTotal">—</div><div class="stat-l">Classmates Registered</div></div>
   <div class="stat"><div class="stat-n" id="sHead">—</div><div class="stat-l">Total Headcount</div></div>
-  <div class="stat"><div class="stat-n" style="font-size:22px;">$60</div><div class="stat-l">Per Person Now</div></div>
+  <div class="stat"><div class="stat-n" style="font-size:22px;">$60</div><div class="stat-l">Per Person · Advance</div></div>
 </div>
 
 <div class="list-section">
@@ -287,7 +307,7 @@
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Can I pay at the door?<span class="faq-chevron">▼</span></button>
-        <div class="faq-a">Yes — walk-up tickets are available at the door for $70 per person ($140 for two), subject to availability. Paying in advance saves $10 per person and helps us plan the food and drinks — so if you can, pay ahead!</div>
+        <div class="faq-a">Walk-up tickets are $70 at the door, but we strongly encourage paying in advance. It saves you $10, guarantees your spot, and helps us make sure we have enough food and drinks for everyone. We can't promise availability for walk-ins.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Is there parking?<span class="faq-chevron">▼</span></button>
@@ -319,18 +339,18 @@
     <div class="payment-note">Your spot is not confirmed until payment is received.</div>
     <div class="pricing-grid">
       <div class="pricing-card best">
-        <div class="pricing-badge badge-best">Buy in Advance</div>
+        <div class="pricing-badge badge-best">Register by Apr 28</div>
         <div class="pricing-label">Best option</div>
         <div class="pricing-row"><span class="pricing-who">Just Me</span><span class="pricing-amt">$60</span></div>
         <div class="pricing-row"><span class="pricing-who">Me + Guest</span><span class="pricing-amt">$120</span></div>
-        <div class="pricing-deadline">Locks in your spot</div>
+        <div class="pricing-deadline">Locks in your spot · helps us plan</div>
       </div>
       <div class="pricing-card door">
         <div class="pricing-badge badge-door">At the Door</div>
         <div class="pricing-label">Night of event</div>
         <div class="pricing-row"><span class="pricing-who">Just Me</span><span class="pricing-amt">$70</span></div>
         <div class="pricing-row"><span class="pricing-who">Me + Guest</span><span class="pricing-amt">$140</span></div>
-        <div class="pricing-deadline">Subject to availability</div>
+        <div class="pricing-door-note">Not guaranteed · subject to availability</div>
       </div>
     </div>
     <div class="pay-methods">
@@ -382,6 +402,19 @@ function addToCalendar() {
   var t = encodeURIComponent('DHS Class of 2006 — 20th Reunion');
   var l = encodeURIComponent('The Funwoody Courtyard, 5521 Chamblee Dunwoody Road, Dunwoody, GA');
   window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text='+t+'&dates=20260502T183000/20260502T213000&location='+l,'_blank');
+}
+
+function shareLink() {
+  var url = 'https://peytoned21.github.io/dhs-reunion/';
+  if (navigator.share) {
+    navigator.share({ title: 'DHS Class of 2006 — 20th Reunion', url: url }).catch(function(){});
+  } else {
+    navigator.clipboard.writeText(url).then(function(){
+      var toast = document.getElementById('shareToast');
+      toast.classList.add('show');
+      setTimeout(function(){ toast.classList.remove('show'); }, 2500);
+    });
+  }
 }
 
 function copyText(text, btn) {
